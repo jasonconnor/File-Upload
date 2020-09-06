@@ -5,7 +5,8 @@ const url = 'mongodb://localhost:27017/file'
 const connect = async () => {
   try {
     await mongoose.connect(url, {
-      useNewUrlParser: true
+      useNewUrlParser: true,
+      useUnifiedTopology: true
     }).then(() => {
       console.log('Connected to MongoDB.')
     })
