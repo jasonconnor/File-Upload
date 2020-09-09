@@ -5,14 +5,27 @@ exports.index = (req, res, next) => {
 }
 
 exports.create = async (req, res, next) => {
-  const file = req.file
-  const post = new Post({
+  let file = req.file
+
+  if (!file) {
+    return res.status(400).json({
+      message: 'No file was uploaded.'
+    })
+  }
+  
+  if (file.mimetype !== 'image/jpeg') {
+    return res.status(400).json({
+      message: 'Invalid filetype.'
+    })
+  }
+
+  let post = new Post({
     file: file.filename
   })
 
   try {
     await post.save()
-    res.status(200).json(post)
+    res.status(200).json(file)
   } catch(error) {
     res.status(422).json(error)
   }
