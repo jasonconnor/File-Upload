@@ -9,13 +9,13 @@ exports.create = async (req, res, next) => {
 
   if (!file) {
     return res.status(400).json({
-      message: 'No file was uploaded.'
+      error: 'No file was uploaded.'
     })
   }
   
   if (file.mimetype !== 'image/jpeg') {
-    return res.status(400).json({
-      message: 'Invalid filetype.'
+    return res.status(422).json({
+      error: 'Invalid filetype.'
     })
   }
 
@@ -24,9 +24,9 @@ exports.create = async (req, res, next) => {
   })
 
   try {
-    await post.save()
-    res.status(200).json(file)
+    //await post.save()
+    res.status(200).send({post})
   } catch(error) {
-    res.status(422).json(error)
+    res.status(422).json({error})
   }
 }

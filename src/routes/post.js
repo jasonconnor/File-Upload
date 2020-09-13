@@ -18,6 +18,6 @@ const router = express.Router()
 
 router.get('/', controller.index)
 
-router.post('/new', upload.single('file'), controller.create)
+router.post('/upload', upload.single('file'), controller.create)
 
 module.exports = router
