@@ -24,7 +24,7 @@ exports.create = async (req, res, next) => {
   })
 
   try {
-    //await post.save()
+    await post.save()
     res.status(200).send({post})
   } catch(error) {
     res.status(422).json({error})

@@ -1,13 +1,24 @@
-import React from 'react'
+import React, {Fragment} from 'react'
+
+import './app.sass'
 
 import Upload from './Upload'
 
+
 const App = () => {
   return (
-    <div>
-      <h1>File Upload</h1>
-      <Upload />
-    </div>
+    <Fragment>
+    <header>
+      <div className='wrapper'>
+        <h1>File Upload</h1>
+      </div>
+    </header>
+    <main>
+      <div className='wrapper'>
+        <Upload />
+      </div>
+    </main>
+    </Fragment>
   )
 }
 

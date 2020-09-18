@@ -5,14 +5,23 @@ const controller = require('../controllers/post')
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, './uploads')
+    cb(null, './client/public/uploads')
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname)
   }
 })
 
-const upload = multer({storage: storage})
+const upload = multer({
+  storage: storage,
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype !== 'image/jpeg') {
+      cb(null, false)
+    } else {
+      cb(null, true)
+    }
+  }
+})
 
 const router = express.Router()
 

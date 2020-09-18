@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 
+import './upload.sass'
+
 const Upload = () => {
   const [file, setFile] = useState('')
   const [message, setMessage] = useState('')
@@ -10,6 +12,7 @@ const Upload = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault()
+    setFile('')
     let formData = new FormData()
 
     formData.append('file', file)
@@ -32,12 +35,22 @@ const Upload = () => {
   return (
     <form onSubmit={onSubmit}>
 
-      <span>{message}</span>
+      { message 
+        ? <span className='message'>{message}</span> 
+        : null 
+      }
+      
+      <label for='file'>
+        { file 
+          ? file.name
+          : 'Select a File'
+        }
+      </label>
+      <input id='file' type='file' onChange={onChange} />
 
-      <label>Upload a file:</label>
-      <input type='file' onChange={onChange} />
-
-      <input type='submit' value='Upload' />
+      <button type='submit'>
+        <i class="fas fa-file-upload"></i> Upload
+      </button>
     </form>
   )
 }
