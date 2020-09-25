@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon app"
+    "server": "nodemon app",
+    "client": "npm start --prefix client",
+    "app": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
