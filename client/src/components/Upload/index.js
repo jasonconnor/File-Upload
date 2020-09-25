@@ -27,8 +27,7 @@ const Upload = () => {
           : setMessage(json.post.file + ' was uploaded.')
         )
     } catch(error) {
-      console.log(error)
-      setMessage('Unable to upload your file right now.')
+      setMessage('Unable to upload your file right now. Try again later.')
     }
   }
 
