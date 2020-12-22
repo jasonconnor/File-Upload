@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-import './upload.sass'
+import * as S from './style.js'
 
 const Upload = () => {
   const [file, setFile] = useState('')
@@ -32,25 +32,25 @@ const Upload = () => {
   }
 
   return (
-    <form onSubmit={onSubmit}>
+    <S.Form onSubmit={onSubmit}>
 
       { message 
-        ? <span className='message'>{message}</span> 
+        ? <S.Message>{message}</S.Message> 
         : null 
       }
       
-      <label for='file'>
+      <S.FileLabel htmlFor='file'>
         { file 
           ? file.name
           : 'Select a File'
         }
-      </label>
-      <input id='file' type='file' onChange={onChange} />
+      </S.FileLabel>
+      <S.FileInput type='file' id='file' onChange={onChange} />
 
-      <button type='submit'>
+      <S.SubmitForm type='submit'>
         <i class="fas fa-file-upload"></i> Upload
-      </button>
-    </form>
+      </S.SubmitForm>
+    </S.Form>
   )
 }
 
